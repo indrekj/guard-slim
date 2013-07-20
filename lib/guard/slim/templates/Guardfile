@@ -1,0 +1,3 @@
+guard "slim" do
+  watch(%r{^templates/.+(\.slim)$})
+end

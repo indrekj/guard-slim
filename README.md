@@ -30,8 +30,8 @@ The following options can be passed to guard-slim:
   :output => "public"      # Relative path to the output directory
                            # Default: public
 
-  :all_on_start => true    # Compiles all slim files on start
-                           # Default: true
+  :all_on_start => false   # Compiles all slim files on start
+                           # Default: false
 
   :context => ContextClass # Render the template in the given context with
                            # the locals specified as methods. Look below for

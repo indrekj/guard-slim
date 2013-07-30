@@ -47,6 +47,10 @@ module Guard
       paths.each { |path| compile(path) }
     end
 
+    def context
+      @options[:context] || NullContext
+    end
+
     private
 
     def compile(path)
@@ -63,10 +67,6 @@ module Guard
     def render(input_path)
       template = Template.new(input_path)
       TemplateRenderer.new(template).render(context, @options[:slim_options])
-    end
-
-    def context
-      @options.fetch(:context, NullContext)
     end
 
     def output_path(input_path)

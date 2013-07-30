@@ -10,6 +10,7 @@ describe Guard::Slim do
     context "when no options given" do
       it "uses defaults" do
         expect(subject.options).to eq(described_class::DEFAULTS)
+        expect(subject.context).to be(Guard::Slim::NullContext)
       end
     end
 

@@ -1,5 +1,5 @@
 module Guard
-  class Slim < Guard
+  class Slim < Plugin
     class Template < Struct.new(:path)
     end
   end

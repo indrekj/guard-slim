@@ -11,7 +11,9 @@ module Guard
       :input        => "templates",
       :output       => "public",
       :context      => nil,
-      :slim_options => {}
+      :slim_options => {
+        :pretty => true
+      }
     }.freeze
 
     # Initializes a Guard plugin
@@ -68,7 +70,12 @@ module Guard
     end
 
     def output_path(input_path)
-      path    = File.expand_path(input_path).sub(@options[:input], @options[:output])
+      path = File.expand_path(input_path)
+
+      parts = path.rpartition('/' + @options[:input] + '/')
+      parts[(parts.find_index('/' + @options[:input] + '/'))] = '/' + @options[:output] + '/'
+      path = parts.join
+
       dirname = File.dirname(path)
 
       FileUtils.mkpath(dirname) unless File.directory?(dirname)

@@ -1,11 +1,11 @@
 require "guard"
-require "guard/guard"
 require "guard/watcher"
 require "slim"
 require "fileutils"
+require "guard/compat/plugin"
 
 module Guard
-  class Slim < Guard
+  class Slim < Plugin
     NullContext = Struct.new(:template)
 
     DEFAULTS = {
@@ -23,9 +23,9 @@ module Guard
     # @param [Hash] options
     #   the plugin options
     #
-    def initialize(watchers = [], options = {})
+    def initialize(options = {})
       options = DEFAULTS.merge(options)
-      super(watchers, options)
+      super(options)
     end
 
     # Called once when Guard starts

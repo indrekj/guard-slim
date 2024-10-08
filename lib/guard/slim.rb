@@ -2,7 +2,6 @@ require "guard"
 require "guard/watcher"
 require "slim"
 require "fileutils"
-require "guard/compat/plugin"
 
 module Guard
   class Slim < Plugin

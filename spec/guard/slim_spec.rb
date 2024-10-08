@@ -1,9 +1,8 @@
 require "spec_helper"
 
-describe Guard::Slim do
-  subject { described_class.new(watchers, options) }
+RSpec.describe Guard::Slim do
+  subject { described_class.new(options) }
 
-  let(:watchers) { [] }
   let(:options)  { {} }
 
   describe "#initialize" do

@@ -67,7 +67,7 @@ module Guard
     end
 
     def output_path(input_path)
-      path    = File.expand_path(input_path).sub(@options[:input], @options[:output])
+      path = File.expand_path(input_path).sub(@options[:input], @options[:output])
       dirname = File.dirname(path)
 
       FileUtils.mkpath(dirname) unless File.directory?(dirname)

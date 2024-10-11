@@ -1,11 +1,10 @@
 require "guard"
-require "guard/guard"
 require "guard/watcher"
 require "slim"
 require "fileutils"
 
 module Guard
-  class Slim < Guard
+  class Slim < Plugin
     NullContext = Struct.new(:template)
 
     DEFAULTS = {
@@ -18,14 +17,12 @@ module Guard
 
     # Initializes a Guard plugin
     #
-    # @param [Array<Guard::Watcher>] watchers
-    #   the plugin file watchers
     # @param [Hash] options
     #   the plugin options
     #
-    def initialize(watchers = [], options = {})
+    def initialize(options = {})
       options = DEFAULTS.merge(options)
-      super(watchers, options)
+      super(options)
     end
 
     # Called once when Guard starts
@@ -70,7 +67,7 @@ module Guard
     end
 
     def output_path(input_path)
-      path    = File.expand_path(input_path).sub(@options[:input], @options[:output])
+      path = File.expand_path(input_path).sub(@options[:input], @options[:output])
       dirname = File.dirname(path)
 
       FileUtils.mkpath(dirname) unless File.directory?(dirname)

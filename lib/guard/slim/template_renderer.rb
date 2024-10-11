@@ -1,5 +1,7 @@
+require 'guard/slim'
+
 module Guard
-  class Slim < Guard
+  class Slim < Plugin
     class TemplateRenderer
       # Initializes a template renderer
       #
